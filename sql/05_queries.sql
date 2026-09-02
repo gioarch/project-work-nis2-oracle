@@ -8,6 +8,10 @@
 -- NON risulta eseguito su un'istanza Oracle in questa fase.
 -- ============================================================
 
+-- Mantiene valide le istruzioni multilinea anche in presenza di righe vuote
+-- quando lo script viene eseguito con SQLcl o SQL*Plus.
+SET SQLBLANKLINES ON
+
 -- Q1 - Asset critici
 -- Estrae gli asset classificati CRITICA con organizzazione e stato corrente.
 SELECT
@@ -70,9 +74,7 @@ JOIN asset_responsabili ar
     ON ar.id_responsabile = r.id_responsabile
 JOIN asset a
     ON a.id_asset = ar.id_asset
-
 UNION ALL
-
 SELECT
     r.id_responsabile,
     r.nome || ' ' || r.cognome AS nominativo,
@@ -85,7 +87,6 @@ JOIN servizi_responsabili sr
     ON sr.id_responsabile = r.id_responsabile
 JOIN servizi s
     ON s.id_servizio = sr.id_servizio
-
 ORDER BY nominativo, tipo_elemento, elemento_competenza;
 
 -- Spiegazione Q4: i due rami distinguono responsabilita su asset e su servizi.
@@ -108,9 +109,7 @@ JOIN asset_responsabili ar
     ON ar.id_responsabile = r.id_responsabile
 JOIN asset a
     ON a.id_asset = ar.id_asset
-
 UNION ALL
-
 SELECT
     r.nome || ' ' || r.cognome AS nominativo,
     r.ruolo,
@@ -127,7 +126,6 @@ JOIN servizi_responsabili sr
     ON sr.id_responsabile = r.id_responsabile
 JOIN servizi s
     ON s.id_servizio = sr.id_servizio
-
 ORDER BY nominativo, funzione, priorita_contatto, tipo_elemento, elemento_competenza;
 
 -- Spiegazione Q5: l'elemento di competenza deriva sempre dalle associative canoniche.

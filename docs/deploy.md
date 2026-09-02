@@ -26,6 +26,16 @@ sql <utente>@<servizio_oracle>
 
 Non inserire password nella riga di comando, nei file SQL o nei log condivisi.
 
+Prima di eseguire gli script o incollare istruzioni SQL multilinea, abilitare
+la gestione delle righe vuote nella sessione SQLcl/SQL*Plus:
+
+```sql
+SET SQLBLANKLINES ON
+```
+
+`sql/05_queries.sql` applica autonomamente la stessa impostazione, così le
+query con `UNION ALL` restano riproducibili anche se avviate singolarmente.
+
 ## Ordine esatto degli script
 
 Eseguire dalla radice del repository:
@@ -53,6 +63,8 @@ Dipendenze principali:
   VIEW o test;
 - non ignorare un errore e non proseguire dichiarando un esito positivo;
 - distinguere i messaggi informativi SQLcl dagli errori Oracle;
+- mantenere `SET SQLBLANKLINES ON` per evitare che una riga vuota interrompa
+  prematuramente un'istruzione SQL multilinea;
 - conservare il log completo della sessione quando viene eseguito il collaudo;
 - non modificare il modello per aggirare un errore: applicare il Protocollo di
   modifica dello schema previsto dal Master Workflow.
@@ -113,4 +125,3 @@ SPOOL OFF
 Il log deve essere realmente prodotto e controllato prima di essere indicato
 come evidenza. Rimuovere o mascherare eventuali dati di connessione; non
 includere credenziali. Il CSV e i log non devono essere simulati.
-
