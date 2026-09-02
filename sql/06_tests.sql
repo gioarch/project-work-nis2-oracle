@@ -7,7 +7,7 @@
 -- Eseguire dopo 01_schema.sql, 02_indexes.sql, 03_dataset.sql e 04_views.sql.
 -- Tutti i test sono di sola lettura: non modificano i dati.
 -- VALIDAZIONE: statica e logico-referenziale.
--- NON risulta eseguito su un'istanza Oracle in questa fase.
+-- ESECUZIONE REALE: 39 esiti OK su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 SET PAGESIZE 100

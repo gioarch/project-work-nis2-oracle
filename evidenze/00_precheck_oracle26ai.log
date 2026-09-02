@@ -1,0 +1,94 @@
+SQL> PROMPT === VERSIONE DATABASE ===
+=== VERSIONE DATABASE ===
+SQL> SELECT banner
+  2  FROM v$version
+  3  WHERE banner LIKE 'Oracle%';
+
+BANNER                                                                                                   
+________________________________________________________________________________________________________ 
+Oracle AI Database 26ai EE Extreme Perf Release 23.26.0.0.0 - for Oracle Cloud and Engineered Systems    
+
+1 row selected. 
+
+SQL> PROMPT === SESSIONE DI COLLAUDO ===
+=== SESSIONE DI COLLAUDO ===
+SQL> SELECT USER AS schema_utente,
+  2         SYS_CONTEXT('USERENV', 'DB_NAME') AS database_name,
+  3         SYS_CONTEXT('USERENV', 'SERVICE_NAME') AS service_name,
+  4         SYSTIMESTAMP AS data_collaudo
+  5  FROM dual;
+
+SCHEMA_UTENTE                     DATABASE_NAME              SERVICE_NAME                                                        DATA_COLLAUDO                          
+_________________________________ __________________________ ___________________________________________________________________ ______________________________________ 
+[SCHEMA_FREESQL_26AI]             FREESQLPRD_SCHEMA_PDB01    [SERVICE_FREESQL_26AI]                                             02-SEP-26 10.40.45.448115000 AM GMT    
+
+1 row selected. 
+
+SQL> PROMPT === PRIVILEGI NECESSARI ===
+=== PRIVILEGI NECESSARI ===
+SQL> SELECT privilege
+  2  FROM session_privs
+  3  WHERE privilege IN (
+  4      'CREATE TABLE',
+  5      'CREATE VIEW'
+  6  )
+  7  ORDER BY privilege;
+
+PRIVILEGE       
+_______________ 
+CREATE TABLE    
+CREATE VIEW     
+
+2 rows selected. 
+
+SQL> PROMPT === OGGETTI PROGETTUALI: ATTESI ZERO ===
+=== OGGETTI PROGETTUALI: ATTESI ZERO ===
+SQL> SELECT object_type, object_name
+  2  FROM user_objects
+  3  WHERE object_name IN (
+  4      'ORGANIZZAZIONI',
+  5      'FORNITORI',
+  6      'ASSET',
+  7      'SERVIZI',
+  8      'RESPONSABILI',
+  9      'PUNTI_CONTATTO',
+ 10      'ASSET_SERVIZI',
+ 11      'SERVIZI_FORNITORI',
+ 12      'ASSET_RESPONSABILI',
+ 13      'SERVIZI_RESPONSABILI',
+ 14      'DIPENDENZE',
+ 15      'STORICO_ASSET',
+ 16      'STORICO_SERVIZI',
+ 17      'VW_EXPORT_NIS2_DEMO'
+ 18  )
+ 19  ORDER BY object_type, object_name;
+
+
+0 rows selected. 
+
+SQL> SELECT COUNT(*) AS oggetti_progettuali
+  2  FROM user_objects
+  3  WHERE object_name IN (
+  4      'ORGANIZZAZIONI',
+  5      'FORNITORI',
+  6      'ASSET',
+  7      'SERVIZI',
+  8      'RESPONSABILI',
+  9      'PUNTI_CONTATTO',
+ 10      'ASSET_SERVIZI',
+ 11      'SERVIZI_FORNITORI',
+ 12      'ASSET_RESPONSABILI',
+ 13      'SERVIZI_RESPONSABILI',
+ 14      'DIPENDENZE',
+ 15      'STORICO_ASSET',
+ 16      'STORICO_SERVIZI',
+ 17      'VW_EXPORT_NIS2_DEMO'
+ 18  );
+
+   OGGETTI_PROGETTUALI 
+______________________ 
+                     0 
+
+1 row selected. 
+
+SQL> SPOOL OFF

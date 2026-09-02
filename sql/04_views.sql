@@ -5,7 +5,7 @@
 -- File: 04_views.sql
 --
 -- VALIDAZIONE: statica, sintattica e logico-referenziale.
--- NON risulta eseguito su un'istanza Oracle in questa fase.
+-- ESECUZIONE REALE: superata su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 -- La VIEW vw_export_nis2_demo è una soluzione didattica sviluppata per

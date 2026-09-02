@@ -8,7 +8,7 @@
 -- esclusivamente per finalita didattiche.
 --
 -- VALIDAZIONE: statica, sintattica e logico-referenziale.
--- NON risulta eseguito su un'istanza Oracle in questa fase.
+-- ESECUZIONE REALE: superata su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 -- Gli ID espliciti restano nell'intervallo basso e sono compatibili

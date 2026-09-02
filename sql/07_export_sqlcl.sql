@@ -5,7 +5,7 @@
 --
 -- Eseguire dopo 04_views.sql in una sessione Oracle SQLcl.
 -- VALIDAZIONE: statica e logico-referenziale.
--- NON risulta eseguito realmente in questa fase.
+-- ESECUZIONE REALE: CSV generato su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 -- SQLFORMAT csv configura SQLcl per rappresentare il risultato in formato CSV.

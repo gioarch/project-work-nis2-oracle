@@ -15,19 +15,22 @@ Il package tecnico è pubblicato nel repository GitHub reale:
 - branch principale: `main`;
 - clone HTTPS: `git clone https://github.com/gioarch/project-work-nis2-oracle.git`.
 
-Il contenuto pubblicato corrisponde al package tecnico validato per lo Step 12.
+Il contenuto pubblicato comprende il package tecnico validato e le evidenze
+reali del collaudo Oracle.
 
 ## DBMS e prerequisiti
 
 - Oracle Database 12c o successivo per il supporto alle colonne `IDENTITY`;
+- collaudo reale completato su Oracle AI Database 26ai EE Extreme Perf,
+  release `23.26.0.0.0`;
 - Oracle SQLcl per l'esportazione CSV mediante `SET SQLFORMAT csv` e `SPOOL`;
 - in alternativa, SQL Developer per l'esecuzione manuale degli script SQL;
 - uno schema utente dedicato e vuoto, con privilegi ordinari di creazione degli
   oggetti necessari;
 - codifica UTF-8 per file e sessione client.
 
-Il progetto è stato validato staticamente ma non ancora eseguito su una reale
-istanza Oracle Database.
+Il progetto è stato validato staticamente e successivamente eseguito su una
+reale istanza Oracle AI Database 26ai mediante SQLcl 26.2.2.
 
 ## Struttura
 
@@ -47,6 +50,11 @@ project-work-nis2-oracle/
 │   ├── data_dictionary.md
 │   ├── deploy.md
 │   └── popolamento_manutenzione.md
+├── evidenze/
+│   ├── README.md
+│   ├── checklist_esecuzione_oracle26ai.md
+│   ├── log reali del collaudo
+│   └── export_nis2_demo_26ai.csv
 └── relazione/
     └── README.md
 ```
@@ -76,8 +84,8 @@ riservato `.invalid`.
 assenza di auto-dipendenze, unicità e ricostruibilità delle versioni storiche,
 risultati significativi delle query e interrogabilità della VIEW.
 
-I valori `OK` previsti nei test sono condizioni calcolate dalle query: non sono
-evidenze di esecuzione finché lo script non viene eseguito realmente su Oracle.
+I 39 esiti calcolati da `sql/06_tests.sql` sono risultati `OK` durante il
+collaudo reale. I log osservati sono conservati in [`evidenze/`](evidenze/).
 
 ## Generazione del CSV
 
@@ -88,20 +96,17 @@ Dopo la creazione della VIEW, eseguire con Oracle SQLcl:
 ```
 
 Lo script genera `export_nis2_demo.csv` nella directory di lavoro del client.
-Il CSV non è incluso nel repository finché non viene prodotto da un'esecuzione
-reale.
+Il CSV realmente prodotto e verificato è conservato come
+[`evidenze/export_nis2_demo_26ai.csv`](evidenze/export_nis2_demo_26ai.csv).
 
 ## Validazione statica ed esecuzione reale
 
-La validazione svolta comprende coerenza tra DDL, dataset, query, VIEW, Data
-Dictionary e test. Non equivale a un deploy o a un collaudo su Oracle.
-
-Non sono quindi dichiarati come realmente avvenuti:
-
-- creazione di tabelle, indici o VIEW;
-- caricamento del dataset;
-- esecuzione delle query e dei test;
-- generazione del CSV.
+La validazione statica ha verificato la coerenza tra DDL, dataset, query, VIEW,
+Data Dictionary e test. Il collaudo reale del 2 settembre 2026 ha inoltre
+verificato la creazione di 13 tabelle, 47 vincoli nominati, tre indici
+aggiuntivi, il caricamento di 98 record, la VIEW, le query Q1-Q9, i test T01-T09
+e l'export CSV. Il dettaglio, inclusi ambiente e commit testati, è riportato in
+[`evidenze/README.md`](evidenze/README.md).
 
 ## Natura didattica e disclaimer ACN
 

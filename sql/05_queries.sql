@@ -5,7 +5,7 @@
 -- File: 05_queries.sql
 --
 -- VALIDAZIONE: statica, sintattica e logico-referenziale.
--- NON risulta eseguito su un'istanza Oracle in questa fase.
+-- ESECUZIONE REALE: superata e ritestata su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 -- Mantiene valide le istruzioni multilinea anche in presenza di righe vuote

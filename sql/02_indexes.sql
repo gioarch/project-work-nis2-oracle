@@ -6,7 +6,7 @@
 --
 -- Contiene esclusivamente indici NON già coperti da PK/UNIQUE.
 -- VALIDAZIONE: statica e logico-referenziale.
--- NON risulta eseguito su un'istanza Oracle in questa fase.
+-- ESECUZIONE REALE: superata su Oracle AI Database 26ai con SQLcl 26.2.2.
 -- ============================================================
 
 -- TRADE-OFF GENERALE:
