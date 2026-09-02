@@ -9,7 +9,7 @@ storiche, oltre a una VIEW destinata a un'esportazione CSV dimostrativa.
 
 ## Stato del repository remoto
 
-Il package tecnico è pubblicato nel repository GitHub:
+Il package tecnico è pubblicato nel repository GitHub reale:
 
 - repository: <https://github.com/gioarch/project-work-nis2-oracle>;
 - branch principale: `main`;
@@ -26,7 +26,7 @@ Il contenuto pubblicato corrisponde al package tecnico validato per lo Step 12.
   oggetti necessari;
 - codifica UTF-8 per file e sessione client.
 
-Il progetto è stato validato staticamente e poi eseguito su una reale
+Il progetto è stato validato staticamente ma non ancora eseguito su una reale
 istanza Oracle Database.
 
 ## Struttura
@@ -51,7 +51,7 @@ project-work-nis2-oracle/
     └── README.md
 ```
 
-`relazione/project_work.pdf` è stato aggiunto dopo la redazione e
+`relazione/project_work.pdf` sarà aggiunto esclusivamente dopo la redazione e
 l'assemblaggio finale previsti dal workflow; non viene creato un PDF segnaposto.
 
 ## Ordine di esecuzione
